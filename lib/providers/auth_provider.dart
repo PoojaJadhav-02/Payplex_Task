@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../models/user_model.dart';
 
 class AuthProvider extends ChangeNotifier {
@@ -9,19 +10,46 @@ class AuthProvider extends ChangeNotifier {
   bool get isLoading => _isLoading;
   bool get isAuthenticated => _user != null;
 
+  AuthProvider() {
+    checkLogin();
+  }
+
+  Future<void> checkLogin() async {
+    final prefs = await SharedPreferences.getInstance();
+    final name = prefs.getString('user_name');
+    final email = prefs.getString('user_email');
+    
+    if (name != null && email != null) {
+      _user = UserModel(
+        id: '1',
+        name: name,
+        email: email,
+        phone: prefs.getString('user_phone') ?? '+91 98765 43210',
+        profileImage: 'https://i.pravatar.cc/150?u=1',
+      );
+      notifyListeners();
+    }
+  }
+
   Future<bool> login(String email, String password) async {
     _isLoading = true;
     notifyListeners();
 
+    // Simulate API call
     await Future.delayed(const Duration(seconds: 2));
 
     _user = UserModel(
       id: '1',
-      name: 'John Doe',
+      name: 'Prakash Kumar',
       email: email,
-      phone: '+1 234 567 890',
+      phone: '+91 98765 43210',
       profileImage: 'https://i.pravatar.cc/150?u=1',
     );
+
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('user_name', _user!.name);
+    await prefs.setString('user_email', _user!.email);
+    await prefs.setString('user_phone', _user!.phone);
 
     _isLoading = false;
     notifyListeners();
@@ -37,6 +65,7 @@ class AuthProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
 
+    // Simulate API call
     await Future.delayed(const Duration(seconds: 2));
 
     _user = UserModel(
@@ -47,6 +76,11 @@ class AuthProvider extends ChangeNotifier {
       profileImage: 'https://i.pravatar.cc/150?u=1',
     );
 
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('user_name', _user!.name);
+    await prefs.setString('user_email', _user!.email);
+    await prefs.setString('user_phone', _user!.phone);
+
     _isLoading = false;
     notifyListeners();
     return true;
@@ -56,14 +90,17 @@ class AuthProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
 
+    // Simulate API call
     await Future.delayed(const Duration(seconds: 2));
 
     _isLoading = false;
     notifyListeners();
   }
 
-  void logout() {
+  Future<void> logout() async {
     _user = null;
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.clear();
     notifyListeners();
   }
 }

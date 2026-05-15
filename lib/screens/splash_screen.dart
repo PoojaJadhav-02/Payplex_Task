@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:animate_do/animate_do.dart';
+import 'package:provider/provider.dart';
 import '../constants/app_colors.dart';
 import '../constants/app_text_styles.dart';
 import '../utils/routes.dart';
+import '../providers/auth_provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,13 +17,18 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    _navigateToLogin();
+    _navigateToNext();
   }
 
-  Future<void> _navigateToLogin() async {
+  Future<void> _navigateToNext() async {
     await Future.delayed(const Duration(seconds: 3));
     if (mounted) {
-      Navigator.pushReplacementNamed(context, AppRoutes.login);
+      final authProvider = Provider.of<AuthProvider>(context, listen: false);
+      if (authProvider.isAuthenticated) {
+        Navigator.pushReplacementNamed(context, AppRoutes.dashboard);
+      } else {
+        Navigator.pushReplacementNamed(context, AppRoutes.login);
+      }
     }
   }
 
