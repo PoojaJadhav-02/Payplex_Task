@@ -25,7 +25,7 @@ class AuthProvider extends ChangeNotifier {
         name: name,
         email: email,
         phone: prefs.getString('user_phone') ?? '+91 98765 43210',
-        profileImage: 'https://i.pravatar.cc/150?u=1',
+        profileImage: 'https://www.istockphoto.com/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-gm1495088043-518213332?searchscope=image%2Cfilm',
       );
       notifyListeners();
     }
@@ -35,15 +35,14 @@ class AuthProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
 
-    // Simulate API call
     await Future.delayed(const Duration(seconds: 2));
 
     _user = UserModel(
       id: '1',
-      name: 'Prakash Kumar',
+      name: 'Pooja Jadhav',
       email: email,
       phone: '+91 98765 43210',
-      profileImage: 'https://i.pravatar.cc/150?u=1',
+      profileImage: 'https://www.istockphoto.com/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-gm1495088043-518213332?searchscope=image%2Cfilm',
     );
 
     final prefs = await SharedPreferences.getInstance();
@@ -73,7 +72,7 @@ class AuthProvider extends ChangeNotifier {
       name: name,
       email: email,
       phone: phone,
-      profileImage: 'https://i.pravatar.cc/150?u=1',
+      profileImage: 'https://www.istockphoto.com/vector/user-profile-icon-avatar-or-person-icon-profile-picture-portrait-symbol-default-gm1495088043-518213332?searchscope=image%2Cfilm',
     );
 
     final prefs = await SharedPreferences.getInstance();
@@ -90,7 +89,6 @@ class AuthProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
 
-    // Simulate API call
     await Future.delayed(const Duration(seconds: 2));
 
     _isLoading = false;
