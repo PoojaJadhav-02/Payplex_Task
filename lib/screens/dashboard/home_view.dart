@@ -111,7 +111,7 @@ class HomeView extends StatelessWidget {
         borderRadius: BorderRadius.circular(24),
         boxShadow: [
           BoxShadow(
-            color: AppColors.primary.withOpacity(0.3),
+            color: AppColors.primary.withValues(alpha: 0.3),
             blurRadius: 15,
             offset: const Offset(0, 8),
           ),
@@ -130,7 +130,7 @@ class HomeView extends StatelessWidget {
                 const SizedBox(height: 4),
                 Text(
                   'You have 5 deliveries pending for today.',
-                  style: AppTextStyles.bodyMedium.copyWith(color: Colors.white.withOpacity(0.9)),
+                  style: AppTextStyles.bodyMedium.copyWith(color: Colors.white.withValues(alpha: 0.9)),
                 ),
               ],
             ),
@@ -169,7 +169,7 @@ class HomeView extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.05),
+            color: Colors.black.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
@@ -198,7 +198,7 @@ class HomeView extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 40),
-          Icon(Icons.shopping_basket_outlined, size: 80, color: AppColors.textTertiary.withOpacity(0.3)),
+          Icon(Icons.shopping_basket_outlined, size: 80, color: AppColors.textTertiary.withValues(alpha: 0.3)),
           const SizedBox(height: 16),
           Text('No active orders', style: AppTextStyles.bodyMedium),
         ],

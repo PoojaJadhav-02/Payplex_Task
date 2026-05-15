@@ -62,7 +62,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.history_toggle_off, size: 80, color: AppColors.textTertiary.withOpacity(0.3)),
+                            Icon(Icons.history_toggle_off, size: 80, color: AppColors.textTertiary.withValues(alpha: 0.3)),
                             const SizedBox(height: 16),
                             Text('No history found', style: AppTextStyles.bodyMedium),
                           ],

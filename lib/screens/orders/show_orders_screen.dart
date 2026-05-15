@@ -26,7 +26,7 @@ class ShowOrdersScreen extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.assignment_outlined, size: 80, color: AppColors.textTertiary.withOpacity(0.3)),
+                  Icon(Icons.assignment_outlined, size: 80, color: AppColors.textTertiary.withValues(alpha: 0.3)),
                   const SizedBox(height: 16),
                   Text('No active orders found', style: AppTextStyles.bodyMedium),
                 ],

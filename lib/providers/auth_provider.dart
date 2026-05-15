@@ -13,7 +13,6 @@ class AuthProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
 
-    // Simulate API call
     await Future.delayed(const Duration(seconds: 2));
 
     _user = UserModel(
@@ -38,7 +37,6 @@ class AuthProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
 
-    // Simulate API call
     await Future.delayed(const Duration(seconds: 2));
 
     _user = UserModel(
@@ -58,7 +56,6 @@ class AuthProvider extends ChangeNotifier {
     _isLoading = true;
     notifyListeners();
 
-    // Simulate API call
     await Future.delayed(const Duration(seconds: 2));
 
     _isLoading = false;
