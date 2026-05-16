@@ -45,8 +45,15 @@ class OrderCard extends StatelessWidget {
                 children: [
                   const Icon(Icons.person_outline, size: 18, color: AppColors.textSecondary),
                   const SizedBox(width: 8),
-                  Text(order.customerName, style: AppTextStyles.bodyMedium),
-                  const Spacer(),
+                  Expanded(
+                    child: Text(
+                      order.customerName,
+                      style: AppTextStyles.bodyMedium,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
                   Text(
                     DateFormat('MMM dd, hh:mm a').format(order.date),
                     style: AppTextStyles.bodySmall,
